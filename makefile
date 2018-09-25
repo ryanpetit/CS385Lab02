@@ -1,6 +1,6 @@
-.PHONY: run-images testnetserver minibank mysql 
+.PHONY: run-images testnetserver mysql minibank 
 
-run-images: testnetserver minibank mysql  
+run-images: testnetserver mysql minibank  
 
 
 testnetserver:
@@ -13,6 +13,7 @@ minibank:
 mysql:
 	docker build -t mysql ./mysql
 	docker run -i -t -d --name mysql --net testnet mysql	
+	sleep 10
 
 # Stop all docker containers and kill the testnet server
 clean:
